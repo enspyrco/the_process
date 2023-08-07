@@ -1,5 +1,5 @@
-import 'package:astro_types/core_types.dart';
 import 'package:http/http.dart' as http;
+import 'package:types_for_perception/beliefs.dart';
 
 import '../../app/state/app_state.dart';
 import 'update_sections_v_m.dart';

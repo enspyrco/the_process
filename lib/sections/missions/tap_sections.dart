@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:astro_error_handling/astro_error_handling.dart';
-import 'package:astro_locator/astro_locator.dart';
-import 'package:astro_types/core_types.dart';
+import 'package:error_handling_for_perception/error_handling_for_perception.dart';
+import 'package:locator_for_perception/locator_for_perception.dart';
 import 'package:firestore_service_interface/firestore_service_interface.dart';
+import 'package:types_for_perception/beliefs.dart';
 
 import '../../app/state/app_state.dart';
 import '../../projects/models/section_model.dart';

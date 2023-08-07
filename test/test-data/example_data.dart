@@ -1,4 +1,4 @@
-import 'package:astro_types/json_types.dart';
+import 'package:json_utils/json_utils.dart';
 
 JsonMap storeProjectSectionsActionJson = <String, dynamic>{
   'list': [

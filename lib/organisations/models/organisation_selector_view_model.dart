@@ -1,8 +1,8 @@
-import 'package:astro_types/state_types.dart';
+import 'package:types_for_perception/beliefs.dart';
 
 import 'organisation_model.dart';
 
-class OrganisationSelectorViewModel implements AstroState {
+class OrganisationSelectorViewModel implements Belief {
   const OrganisationSelectorViewModel({
     this.selected,
     required this.all,

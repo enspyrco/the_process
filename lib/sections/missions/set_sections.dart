@@ -1,5 +1,5 @@
-import 'package:astro_types/core_types.dart';
-import 'package:astro_types/json_types.dart';
+import 'package:json_utils/json_utils.dart';
+import 'package:types_for_perception/beliefs.dart';
 
 import '../../app/state/app_state.dart';
 import '../../projects/models/section_model.dart';

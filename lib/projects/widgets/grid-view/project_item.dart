@@ -1,4 +1,4 @@
-import 'package:astro_navigation/astro_navigation.dart';
+import 'package:navigation_for_perception/navigation_for_perception.dart';
 import 'package:flutter/material.dart';
 
 import '../../../shared/extensions/build_context_extensions.dart';

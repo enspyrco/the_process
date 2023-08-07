@@ -1,8 +1,8 @@
-import 'package:astro_types/navigation_types.dart';
-import 'package:astro_types/state_types.dart';
+import 'package:types_for_perception/beliefs.dart';
+import 'package:types_for_perception/navigation_types.dart';
 
-class ManageOrganisationsPageState<T extends AstroState>
-    implements PageState, AstroState {
+class ManageOrganisationsPageState<T extends CoreBeliefs>
+    implements PageState, Belief {
   const ManageOrganisationsPageState();
 
   @override

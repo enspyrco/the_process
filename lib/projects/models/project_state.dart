@@ -1,10 +1,10 @@
 // ignore_for_file: not_iterable_spread
 
-import 'package:astro_types/json_types.dart';
-import 'package:astro_types/state_types.dart';
 import 'package:firestore_service_interface/firestore_service_interface.dart';
+import 'package:json_utils/json_utils.dart';
+import 'package:types_for_perception/beliefs.dart';
 
-class ProjectState implements AstroState {
+class ProjectState implements Belief {
   const ProjectState({
     required this.id,
     required this.name,

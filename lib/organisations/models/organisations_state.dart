@@ -1,10 +1,10 @@
-import 'package:astro_types/json_types.dart';
-import 'package:astro_types/state_types.dart';
+import 'package:json_utils/json_utils.dart';
+import 'package:types_for_perception/beliefs.dart';
 
 import 'organisation_creator_view_model.dart';
 import 'organisation_selector_view_model.dart';
 
-class OrganisationsState implements AstroState {
+class OrganisationsState implements Belief {
   const OrganisationsState({
     required this.creator,
     required this.selector,

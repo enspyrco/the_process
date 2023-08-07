@@ -1,6 +1,6 @@
-import 'package:astro_types/state_types.dart';
+import 'package:types_for_perception/beliefs.dart';
 
-class SectionModel implements AstroState {
+class SectionModel implements Belief {
   const SectionModel({
     required this.name,
     required this.folderId,

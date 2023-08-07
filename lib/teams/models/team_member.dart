@@ -1,6 +1,6 @@
-import 'package:astro_types/state_types.dart';
+import 'package:types_for_perception/beliefs.dart';
 
-class TeamMember implements AstroState {
+class TeamMember implements Belief {
   const TeamMember({
     required this.uid,
     required this.firstName,
@@ -16,7 +16,7 @@ class TeamMember implements AstroState {
   final String photoURL;
 
   @override
-  AstroState copyWith() {
+  Belief copyWith() {
     // TODO: implement copyWith
     throw UnimplementedError();
   }

@@ -15,11 +15,11 @@ class ManageOrganisationsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: EmptyAppBar(),
-      body: Column(
+      body: const Column(
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
+            children: [
               OrganisationSelector(),
               DeleteOrganisationButton(),
               OrganisationCreatorView()

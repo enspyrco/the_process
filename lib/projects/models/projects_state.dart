@@ -1,9 +1,9 @@
-import 'package:astro_types/json_types.dart';
-import 'package:astro_types/state_types.dart';
+import 'package:json_utils/json_utils.dart';
+import 'package:types_for_perception/beliefs.dart';
 
 import 'project_state.dart';
 
-class ProjectsState implements AstroState {
+class ProjectsState implements Belief {
   const ProjectsState({
     required this.all,
     required this.creating,

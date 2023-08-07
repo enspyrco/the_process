@@ -1,7 +1,7 @@
-import 'package:astro_types/json_types.dart';
-import 'package:astro_types/state_types.dart';
+import 'package:json_utils/json_utils.dart';
+import 'package:types_for_perception/beliefs.dart';
 
-class OrganisationCreatorViewModel implements AstroState {
+class OrganisationCreatorViewModel implements Belief {
   const OrganisationCreatorViewModel({
     this.name = '',
     this.creating = false,

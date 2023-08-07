@@ -1,5 +1,5 @@
-import 'package:astro_auth/astro_auth.dart';
-import 'package:astro_navigation/astro_navigation.dart';
+import 'package:auth_for_perception/auth_for_perception.dart';
+import 'package:navigation_for_perception/navigation_for_perception.dart';
 import 'package:flutter/material.dart';
 
 import '../app/state/app_state.dart';
