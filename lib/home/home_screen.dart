@@ -14,15 +14,15 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const BasicAppBar(),
+    return const Scaffold(
+      appBar: BasicAppBar(),
       body: Column(
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [OrganisationSelector()],
+            children: [OrganisationSelector()],
           ),
-          const ProjectsGrid()
+          ProjectsGrid()
         ],
       ),
     );
@@ -42,13 +42,13 @@ class BasicAppBar extends StatefulWidget implements PreferredSizeWidget {
 class _BasicAppBarState extends State<BasicAppBar> {
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       mainAxisAlignment: MainAxisAlignment.end,
       children: <Widget>[
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
+          padding: EdgeInsets.symmetric(horizontal: 10),
           child: Row(
-            children: const <Widget>[
+            children: <Widget>[
               LogoIcon(),
               Spacer(),
               NotificationsButton(),

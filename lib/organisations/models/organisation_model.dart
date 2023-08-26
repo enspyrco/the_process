@@ -48,9 +48,9 @@ class OrganisationModel implements Belief {
   factory OrganisationModel.fromDocument(Document doc) => OrganisationModel(
         id: doc.id,
         name: doc.fields['name'] as String,
-        ownerIds: <String>{...doc.fields['ownerIds']},
-        adminIds: <String>{...doc.fields['adminIds']},
-        memberIds: <String>{...doc.fields['memberIds']},
+        ownerIds: <String>{...?(doc.fields['ownerIds'] as List<String>?)},
+        adminIds: <String>{...?(doc.fields['adminIds'] as List<String>?)},
+        memberIds: <String>{...?(doc.fields['memberIds'] as List<String>?)},
       );
 
   factory OrganisationModel.fromJson(Map<String, dynamic> json) =>

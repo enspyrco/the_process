@@ -11,7 +11,7 @@ void main() {
     testWidgets('builds LogoIcon, NotificationsButton, AvatarMenuButton',
         ((tester) async {
       final harness = WidgetTestHarness(
-        initialState: AppState.initialValue(),
+        initialState: AppState.initial,
         innerWidget: const BasicAppBar(),
       );
       await tester.pumpWidget(harness.widget);

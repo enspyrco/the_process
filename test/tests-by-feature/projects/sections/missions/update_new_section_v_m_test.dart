@@ -6,7 +6,7 @@ void main() {
   group('UpdateNewSectionVMReducer', () {
     test('correctly updates new section name', () {
       // Setup app state and check expected values
-      final initialState = AppState.initialValue();
+      final initialState = AppState.initial;
       expect(initialState.sections.newName, '');
 
       const mission = UpdateNewSectionVM(name: 'testy');

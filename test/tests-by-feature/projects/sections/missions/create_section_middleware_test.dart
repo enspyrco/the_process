@@ -9,7 +9,7 @@ void main() {
   group('CreateSection', () {
     test('dispatches UpdateSectionsVM and calls DatabaseServce.createSection',
         () async {
-      var initialState = AppState.initialValue();
+      var initialState = AppState.initial;
 
       var state = initialState.copyWith(
         auth: initialState.auth.copyWith(

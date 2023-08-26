@@ -15,7 +15,7 @@ void main() {
         (widgetTester) async {
       // Setup the harness and check it is in the initial state.
       final harness = WidgetTestHarness(
-        initialState: AppState.initialValue(),
+        initialState: AppState.initial,
         innerWidget: const SectionsView(),
       );
       expect(harness.state.sections.creatingNewSection, false);
@@ -34,7 +34,7 @@ void main() {
     testWidgets(
         'should show waiting indicator given creatingNewSection is true',
         (widgetTester) async {
-      var initialAppState = AppState.initialValue();
+      var initialAppState = AppState.initial;
       var appState = initialAppState.copyWith(
           sections:
               initialAppState.sections.copyWith(creatingNewSection: true));

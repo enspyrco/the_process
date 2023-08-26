@@ -10,7 +10,7 @@ void main() {
     testWidgets('builds BasicAppBar, OrganisationSelector, ProjectsGrid',
         ((tester) async {
       final harness = WidgetTestHarness(
-        initialState: AppState.initialValue(),
+        initialState: AppState.initial,
         innerWidget: const HomeScreen(),
       );
       await tester.pumpWidget(harness.widget);
