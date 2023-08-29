@@ -1,19 +1,19 @@
 import 'package:locator_for_perception/locator_for_perception.dart';
 import 'package:flutter/widgets.dart';
-import 'package:types_for_perception/beliefs.dart';
+import 'package:abstractions/beliefs.dart';
 
 import '../../app/state/app_state.dart';
 
 extension BuildContextExtension on BuildContext {
-  void land(LandingMission<AppState> mission) {
-    return locate<MissionControl<AppState>>().land(mission);
-    // return AstroBase.findMissionControlOf<AppState>(this, listen: false)
+  void land(Conclusion<AppState> mission) {
+    return locate<BeliefSystem<AppState>>().conclude(mission);
+    // return AstroBase.findBeliefSystemOf<AppState>(this, listen: false)
     //     .land(mission);
   }
 
-  Future<void> launch(AwayMission<AppState> mission) {
-    return locate<MissionControl<AppState>>().launch(mission);
-    // return AstroBase.findMissionControlOf<AppState>(this, listen: false)
+  Future<void> launch(Consideration<AppState> mission) {
+    return locate<BeliefSystem<AppState>>().consider(mission);
+    // return AstroBase.findBeliefSystemOf<AppState>(this, listen: false)
     //     .launch(mission);
   }
 }

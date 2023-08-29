@@ -1,17 +1,17 @@
 import 'package:http/http.dart' as http;
-import 'package:types_for_perception/beliefs.dart';
+import 'package:abstractions/beliefs.dart';
 
 import '../../app/state/app_state.dart';
 import 'update_sections_v_m.dart';
 
 final http.Client _client = http.Client();
 
-class CreateSection extends AwayMission<AppState> {
+class CreateSection extends Consideration<AppState> {
   const CreateSection();
 
   @override
-  Future<void> flightPlan(MissionControl<AppState> missionControl) async {
-    final queryParameters = {'name': missionControl.state.sections.newName};
+  Future<void> process(BeliefSystem<AppState> beliefSystem) async {
+    final queryParameters = {'name': beliefSystem.state.sections.newName};
     final uri = Uri.https(
         'section-creation-v6exb2sdca-uc.a.run.app', '', queryParameters);
     final response = await _client.post(uri);
@@ -19,7 +19,7 @@ class CreateSection extends AwayMission<AppState> {
       throw '${response.statusCode} : ${response.reasonPhrase}';
     }
 
-    missionControl.land(const UpdateSectionsVM(creatingNewSection: true));
+    beliefSystem.conclude(const UpdateSectionsVM(creatingNewSection: true));
   }
 
   @override

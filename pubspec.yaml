@@ -11,32 +11,32 @@ dependencies:
     sdk: flutter
 
   # astro
-  core_of_perception:
-    git: https://github.com/enspyrco/core_of_perception
-  types_for_perception:
-    git: https://github.com/enspyrco/types_for_perception
+  percepts:
+    git: https://github.com/enspyrco/percepts
+  abstractions:
+    git: https://github.com/enspyrco/abstractions
   locator_for_perception:
     git: https://github.com/enspyrco/locator_for_perception
-  inspector_for_perception:
-    git: https://github.com/enspyrco/inspector_for_perception
-  auth_for_perception:
-    git: https://github.com/enspyrco/auth_for_perception
-  error_handling_for_perception:
-    git: https://github.com/enspyrco/error_handling_for_perception
-  navigation_for_perception:
-    git: https://github.com/enspyrco/navigation_for_perception
+  introspection:
+    git: https://github.com/enspyrco/introspection
+  identity_in_perception:
+    git: https://github.com/enspyrco/identity_in_perception
+  error_correction_in_perception:
+    git: https://github.com/enspyrco/error_correction_in_perception
+  framing_in_perception:
+    git: https://github.com/enspyrco/framing_in_perception
   
   # auth
   firebase_auth_service_interface:
     git: https://github.com/enspyrco/firebase_auth_service_interface
-  firebase_auth_service_flutterfire:
-    git: https://github.com/enspyrco/firebase_auth_service_flutterfire
+  flutterfire_firebase_auth_service:
+    git: https://github.com/enspyrco/flutterfire_firebase_auth_service
 
   # firestore
   firestore_service_interface:
     git: https://github.com/enspyrco/firestore_service_interface
-  firestore_service_flutterfire:
-    git: https://github.com/enspyrco/firestore_service_flutterfire
+  flutterfire_firestore_service:
+    git: https://github.com/enspyrco/flutterfire_firestore_service
 
   # types
   types_for_auth:
@@ -47,7 +47,7 @@ dependencies:
   # utils 
   uuid: ^3.0.7
   http: ^1.0.0
-  collection: ^1.18.0
+  collection: ^1.17.2
   firebase_core: ^2.15.0
 
 dev_dependencies:

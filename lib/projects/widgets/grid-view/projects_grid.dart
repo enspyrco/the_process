@@ -1,4 +1,4 @@
-import 'package:core_of_perception/core_of_perception.dart';
+import 'package:percepts/percepts.dart';
 import 'package:flutter/material.dart';
 
 import '../../../app/state/app_state.dart';
@@ -11,8 +11,8 @@ class ProjectsGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return OnStateChangeBuilder<AppState, Set<ProjectState>>(
-        transformer: (state) => state.projects.all,
+    return StreamOfConsciousness<AppState, Set<ProjectState>>(
+        infer: (state) => state.projects.all,
         builder: (context, projects) {
           return GridView.count(
             shrinkWrap: true,

@@ -1,4 +1,4 @@
-import 'package:core_of_perception/core_of_perception.dart';
+import 'package:percepts/percepts.dart';
 import 'package:flutter/material.dart';
 
 import '../../../app/state/app_state.dart';
@@ -11,9 +11,9 @@ class SectionsView extends StatelessWidget {
   const SectionsView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return OnStateChangeBuilder<AppState, SectionsState?>(
-      onInit: (missionControl) => missionControl.launch(const TapSections()),
-      transformer: (state) => state.sections,
+    return StreamOfConsciousness<AppState, SectionsState?>(
+      onInit: (beliefSystem) => beliefSystem.consider(const TapSections()),
+      infer: (state) => state.sections,
       builder: (context, vm) {
         if (vm == null || vm.creatingNewSection) {
           return const ProgressIndicatorWithMessage('Creating...');

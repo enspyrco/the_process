@@ -1,17 +1,17 @@
 import 'package:locator_for_perception/locator_for_perception.dart';
 import 'package:firestore_service_interface/firestore_service_interface.dart';
-import 'package:types_for_perception/beliefs.dart';
+import 'package:abstractions/beliefs.dart';
 
 import '../../app/state/app_state.dart';
 import 'update_organisations_page.dart';
 
-class DeleteOrganisation extends AwayMission<AppState> {
+class DeleteOrganisation extends Consideration<AppState> {
   @override
-  Future<void> flightPlan(MissionControl<AppState> missionControl) async {
+  Future<void> process(BeliefSystem<AppState> beliefSystem) async {
     try {
-      missionControl.land(UpdateOrganisationsPage(deleting: true));
+      beliefSystem.conclude(UpdateOrganisationsPage(deleting: true));
 
-      var selected = missionControl.state.organisations.selector.selected;
+      var selected = beliefSystem.state.organisations.selector.selected;
       if (selected == null) return;
 
       var service = locate<FirestoreService>();
@@ -21,7 +21,7 @@ class DeleteOrganisation extends AwayMission<AppState> {
     } catch (error) {
       rethrow;
     } finally {
-      missionControl.land(UpdateOrganisationsPage(deleting: false));
+      beliefSystem.conclude(UpdateOrganisationsPage(deleting: false));
     }
   }
 

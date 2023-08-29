@@ -1,23 +1,23 @@
 import 'package:locator_for_perception/locator_for_perception.dart';
 import 'package:firestore_service_interface/firestore_service_interface.dart';
-import 'package:types_for_perception/beliefs.dart';
+import 'package:abstractions/beliefs.dart';
 
 import '../../app/state/app_state.dart';
 import '../models/organisation_model.dart';
 import 'update_organisations_page.dart';
 
-class CreateOrganisation extends AwayMission<AppState> {
+class CreateOrganisation extends Consideration<AppState> {
   CreateOrganisation(OrganisationModel organisation)
       : _organisation = organisation;
 
   final OrganisationModel _organisation;
 
   @override
-  Future<void> flightPlan(MissionControl<AppState> missionControl) async {
-    missionControl.land(UpdateOrganisationsPage(creating: true));
+  Future<void> process(BeliefSystem<AppState> beliefSystem) async {
+    beliefSystem.conclude(UpdateOrganisationsPage(creating: true));
 
     var organisation =
-        _organisation.copyWith(ownerIds: {missionControl.state.auth.user.uid!});
+        _organisation.copyWith(ownerIds: {beliefSystem.state.auth.user.uid!});
 
     var service = locate<FirestoreService>();
 
@@ -28,7 +28,7 @@ class CreateOrganisation extends AwayMission<AppState> {
     } catch (error) {
       rethrow;
     } finally {
-      missionControl.land(UpdateOrganisationsPage(creating: false));
+      beliefSystem.conclude(UpdateOrganisationsPage(creating: false));
     }
   }
 

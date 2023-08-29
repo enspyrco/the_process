@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:error_handling_for_perception/error_handling_for_perception.dart';
+import 'package:error_correction_in_perception/error_correction_in_perception.dart';
 import 'package:locator_for_perception/locator_for_perception.dart';
 import 'package:firestore_service_interface/firestore_service_interface.dart';
-import 'package:types_for_perception/beliefs.dart';
+import 'package:abstractions/beliefs.dart';
 
 import '../../app/state/app_state.dart';
 import '../models/project_state.dart';
@@ -11,7 +11,7 @@ import 'set_projects.dart';
 
 StreamSubscription<List<Document>>? _subscription;
 
-class TapProjects extends AwayMission<AppState> {
+class TapProjects extends Consideration<AppState> {
   const TapProjects({required String? organisationId, bool turnOff = false})
       : _organisationId = organisationId,
         _turnOff = turnOff;
@@ -20,7 +20,7 @@ class TapProjects extends AwayMission<AppState> {
   final bool _turnOff;
 
   @override
-  Future<void> flightPlan(MissionControl<AppState> missionControl) async {
+  Future<void> process(BeliefSystem<AppState> beliefSystem) async {
     await _subscription?.cancel();
     if (_turnOff) return;
 
@@ -38,7 +38,7 @@ class TapProjects extends AwayMission<AppState> {
             .map<ProjectState>(
                 (document) => ProjectState.fromDocument(document))
             .toSet();
-        missionControl.land(SetProjects(models));
+        beliefSystem.conclude(SetProjects(models));
       },
       onError: (Object error, StackTrace trace) =>
           CreateErrorReport(error, trace),

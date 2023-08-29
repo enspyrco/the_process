@@ -1,10 +1,10 @@
 import 'dart:async';
 
-import 'package:error_handling_for_perception/error_handling_for_perception.dart';
+import 'package:error_correction_in_perception/error_correction_in_perception.dart';
 import 'package:locator_for_perception/locator_for_perception.dart';
 import 'package:collection/collection.dart';
 import 'package:firestore_service_interface/firestore_service_interface.dart';
-import 'package:types_for_perception/beliefs.dart';
+import 'package:abstractions/beliefs.dart';
 
 import '../../app/state/app_state.dart';
 import '../../projects/missions/tap_projects.dart';
@@ -14,13 +14,13 @@ import 'set_selected_organisation.dart';
 
 StreamSubscription<List<Document>>? _subscription;
 
-class TapOrganisations extends AwayMission<AppState> {
+class TapOrganisations extends Consideration<AppState> {
   TapOrganisations({bool turnOff = false}) : _turnOff = turnOff;
 
   final bool _turnOff;
 
   @override
-  Future<void> flightPlan(MissionControl<AppState> missionControl) async {
+  Future<void> process(BeliefSystem<AppState> beliefSystem) async {
     await _subscription?.cancel();
     if (_turnOff) return;
 
@@ -39,10 +39,10 @@ class TapOrganisations extends AwayMission<AppState> {
 
         // Find any added organisatons.
         var added = organisations
-            .difference(missionControl.state.organisations.selector.all)
+            .difference(beliefSystem.state.organisations.selector.all)
             .firstOrNull;
         // Find any removed organisatons.
-        var removed = missionControl.state.organisations.selector.all
+        var removed = beliefSystem.state.organisations.selector.all
             .difference(organisations)
             .firstOrNull;
 
@@ -52,14 +52,14 @@ class TapOrganisations extends AwayMission<AppState> {
         OrganisationModel? nextSelected;
         if (removed == null) {
           nextSelected =
-              added ?? missionControl.state.organisations.selector.selected;
+              added ?? beliefSystem.state.organisations.selector.selected;
         }
 
-        missionControl.land(SetOrganisations(organisations));
-        missionControl.land(SetSelectedOrganisation(nextSelected));
-        missionControl.launch(TapProjects(organisationId: nextSelected?.id));
+        beliefSystem.conclude(SetOrganisations(organisations));
+        beliefSystem.conclude(SetSelectedOrganisation(nextSelected));
+        beliefSystem.consider(TapProjects(organisationId: nextSelected?.id));
       },
-      onError: (Object error, StackTrace trace) => missionControl.land(
+      onError: (Object error, StackTrace trace) => beliefSystem.conclude(
         CreateErrorReport(error, trace),
       ),
     );

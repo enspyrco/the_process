@@ -1,14 +1,14 @@
-import 'package:auth_for_perception/auth_for_perception.dart';
-import 'package:core_of_perception/core_of_perception.dart';
-import 'package:error_handling_for_perception/error_handling_for_perception.dart';
-import 'package:inspector_for_perception/inspector_for_perception.dart';
+import 'package:flutterfire_firestore_service/flutterfire_firestore_service.dart';
+import 'package:identity_in_perception/identity_in_perception.dart';
+import 'package:percepts/percepts.dart';
+import 'package:error_correction_in_perception/error_correction_in_perception.dart';
+import 'package:introspection/introspection.dart';
 import 'package:locator_for_perception/locator_for_perception.dart';
-import 'package:navigation_for_perception/navigation_for_perception.dart';
+import 'package:framing_in_perception/framing_in_perception.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firestore_service_flutterfire/firestore_service_flutterfire.dart';
 import 'package:firestore_service_interface/firestore_service_interface.dart';
 import 'package:flutter/material.dart';
-import 'package:types_for_perception/beliefs.dart';
+import 'package:abstractions/beliefs.dart';
 
 import 'app/state/app_state.dart';
 import 'firebase_options.dart';
@@ -18,36 +18,36 @@ import 'organisations/routes/manage_organisations_screen.dart';
 import 'projects/routes/project_details/project_details_page_state.dart';
 import 'projects/routes/project_details/project_details_screen.dart';
 
-Future<void> astroInitialization() async {
+Future<void> setupPriors() async {
   /// Setup FlutterFire
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   /// Setup Locator so plugins can add SystemChecks & Routes, configure the AppState, etc.
-  Locator.add<SystemChecks>(DefaultSystemChecks());
+  Locator.add<Habits>(DefaultHabits());
   Locator.add<PageGenerator>(DefaultPageGenerator());
   Locator.add<AppState>(AppState.initial);
 
   /// Perform any final initialization by the app such as setting up routes.
   initializeTheProcess();
 
-  /// Finally, create our MissionControl and add to the Locator.
-  Locator.add<MissionControl<AppState>>(DefaultMissionControl<AppState>(
+  /// Finally, create our BeliefSystem and add to the Locator.
+  Locator.add<BeliefSystem<AppState>>(DefaultBeliefSystem<AppState>(
       state: locate<AppState>(),
       errorHandlers: DefaultErrorHandlers<AppState>(),
-      systemChecks: locate<SystemChecks>(),
-      missionControlCtr: ParentingMissionControl.new));
+      systemChecks: locate<Habits>(),
+      beliefSystemFactory: ParentingBeliefSystem.new));
 }
 
 void initializeTheProcess() {
   /// Perform individual plugin initialization.
   initializeErrorHandling<AppState>();
   initializeAuthPlugin<AppState>(initialScreen: const HomeScreen());
-  initializeAstroInspector<AppState>();
+  initializeIntrospection<AppState>();
   initializeNavigationPlugin<AppState>();
 
   /// Add services used in away missions.
-  Locator.add<FirestoreService>(FirestoreServiceFlutterfire());
+  Locator.add<FirestoreService>(FlutterfireFirestoreService());
 
   /// Add page generators for [ManageOrganisations] & [ProjectDetails].
   /// The page generators are applied when a PageState is found in
@@ -82,15 +82,14 @@ class AstroBase extends StatelessWidget {
           Expanded(
             flex: 1,
             child: Material(
-              child: AstroInspectorScreen(
-                  locate<SendMissionReportsToInspector>().stream),
+              child: AstroInspectorScreen(locate<IntrospectionHabit>().stream),
             ),
           ),
         Expanded(
           flex: 1,
-          child: PagesNavigator<AppState>(
-            onInit: (missionControl) =>
-                missionControl.launch(const BindAuthState<AppState>()),
+          child: FramingBuilder<AppState>(
+            onInit: (beliefSystem) =>
+                beliefSystem.consider(const BindAuthState<AppState>()),
           ),
         ),
       ],

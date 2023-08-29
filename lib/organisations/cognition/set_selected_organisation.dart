@@ -1,15 +1,15 @@
-import 'package:types_for_perception/beliefs.dart';
+import 'package:abstractions/beliefs.dart';
 
 import '../../app/state/app_state.dart';
 import '../models/organisation_model.dart';
 
-class SetSelectedOrganisation extends LandingMission<AppState> {
+class SetSelectedOrganisation extends Conclusion<AppState> {
   SetSelectedOrganisation(this.organisation);
 
   final OrganisationModel? organisation;
 
   @override
-  AppState landingInstructions(AppState state) {
+  AppState update(AppState state) {
     var newSelector = (organisation == null)
         ? state.organisations.selector.copyWithDeselect()
         : state.organisations.selector.copyWith(selected: organisation);

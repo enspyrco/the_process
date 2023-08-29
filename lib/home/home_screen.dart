@@ -1,5 +1,5 @@
-import 'package:auth_for_perception/auth_for_perception.dart';
-import 'package:navigation_for_perception/navigation_for_perception.dart';
+import 'package:identity_in_perception/identity_in_perception.dart';
+import 'package:framing_in_perception/framing_in_perception.dart';
 import 'package:flutter/material.dart';
 
 import '../app/state/app_state.dart';
@@ -56,7 +56,7 @@ class _BasicAppBarState extends State<BasicAppBar> {
                 options: {
                   MenuOption('Sign Out', SignOut<AppState>()),
                   MenuOption('Manage Organisations',
-                      PushRoute<AppState>(ManageOrganisationsPageState())),
+                      AddTopLayer<AppState>(ManageOrganisationsPageState())),
                 },
               ),
             ],

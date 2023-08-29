@@ -1,5 +1,5 @@
 import 'package:json_utils/json_utils.dart';
-import 'package:types_for_perception/beliefs.dart';
+import 'package:abstractions/beliefs.dart';
 
 import 'organisation_creator_view_model.dart';
 import 'organisation_selector_view_model.dart';

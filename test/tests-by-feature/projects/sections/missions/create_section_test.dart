@@ -17,13 +17,13 @@ void main() {
         sections: initialState.sections.copyWith(newName: 'testy'),
       );
 
-      var missionControl = RecordingMissionControl<AppState>(state: state);
+      var beliefSystem = RecordingBeliefSystem<AppState>(state: state);
 
       const mission = CreateSection();
-      await mission.flightPlan(missionControl);
+      await mission.process(beliefSystem);
 
       expect(
-          missionControl
+          beliefSystem
               .recorded(const UpdateSectionsVM(creatingNewSection: true)),
           true);
     });

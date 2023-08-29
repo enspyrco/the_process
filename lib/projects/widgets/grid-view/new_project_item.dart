@@ -1,4 +1,4 @@
-import 'package:core_of_perception/core_of_perception.dart';
+import 'package:percepts/percepts.dart';
 import 'package:flutter/material.dart';
 
 import '../../../app/state/app_state.dart';
@@ -12,8 +12,8 @@ class NewProjectItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return OnStateChangeBuilder<AppState, bool>(
-        transformer: (state) => state.projects.creating,
+    return StreamOfConsciousness<AppState, bool>(
+        infer: (state) => state.projects.creating,
         builder: (context, creating) {
           return Padding(
             padding: const EdgeInsets.all(25.0),

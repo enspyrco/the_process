@@ -1,15 +1,15 @@
-import 'package:types_for_perception/beliefs.dart';
+import 'package:abstractions/beliefs.dart';
 
 import '../../app/state/app_state.dart';
 import '../models/project_state.dart';
 
-class SetProjects extends LandingMission<AppState> {
+class SetProjects extends Conclusion<AppState> {
   const SetProjects(Set<ProjectState> projects) : _projects = projects;
 
   final Set<ProjectState> _projects;
 
   @override
-  AppState landingInstructions(AppState state) {
+  AppState update(AppState state) {
     var newProjects = state.projects.copyWith(all: _projects);
     return state.copyWith(projects: newProjects);
   }

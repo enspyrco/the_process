@@ -1,5 +1,5 @@
 import 'package:json_utils/json_utils.dart';
-import 'package:types_for_perception/beliefs.dart';
+import 'package:abstractions/beliefs.dart';
 
 import 'project_state.dart';
 

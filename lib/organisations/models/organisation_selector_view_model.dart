@@ -1,4 +1,4 @@
-import 'package:types_for_perception/beliefs.dart';
+import 'package:abstractions/beliefs.dart';
 
 import 'organisation_model.dart';
 

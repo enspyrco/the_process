@@ -1,15 +1,15 @@
-import 'package:types_for_perception/beliefs.dart';
+import 'package:abstractions/beliefs.dart';
 
 import '../../app/state/app_state.dart';
 
-class UpdateOrganisationsPage extends LandingMission<AppState> {
+class UpdateOrganisationsPage extends Conclusion<AppState> {
   UpdateOrganisationsPage({this.creating, this.deleting});
 
   final bool? creating;
   final bool? deleting;
 
   @override
-  AppState landingInstructions(AppState state) {
+  AppState update(AppState state) {
     final nextCreating = creating ?? state.organisations.creator.creating;
     final nextDeleting = deleting ?? state.organisations.deleting;
 

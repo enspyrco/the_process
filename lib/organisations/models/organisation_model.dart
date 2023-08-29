@@ -2,7 +2,7 @@
 
 import 'package:firestore_service_interface/firestore_service_interface.dart';
 import 'package:json_utils/json_utils.dart';
-import 'package:types_for_perception/beliefs.dart';
+import 'package:abstractions/beliefs.dart';
 
 class OrganisationModel implements Belief {
   const OrganisationModel({

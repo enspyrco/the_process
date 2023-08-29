@@ -1,8 +1,8 @@
-import 'package:types_for_perception/beliefs.dart';
-import 'package:types_for_perception/navigation_types.dart';
+import 'package:abstractions/beliefs.dart';
+import 'package:abstractions/framing.dart';
 
 class ProjectDetailsPageState<T extends CoreBeliefs>
-    implements PageState, Belief {
+    implements FramingLayer, Belief {
   const ProjectDetailsPageState();
 
   @override
