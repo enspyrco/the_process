@@ -11,7 +11,7 @@ void main() {
 
       const mission = UpdateSectionsVM(creatingNewSection: true);
 
-      final newState = mission.update(initialState);
+      final newState = mission.conclude(initialState);
 
       expect(newState.sections.creatingNewSection, true);
     });

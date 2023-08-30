@@ -20,7 +20,7 @@ void main() {
       var beliefSystem = RecordingBeliefSystem<AppState>(state: state);
 
       const mission = CreateSection();
-      await mission.process(beliefSystem);
+      await mission.consider(beliefSystem);
 
       expect(
           beliefSystem

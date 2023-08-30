@@ -9,7 +9,7 @@ class UpdateOrganisationsPage extends Conclusion<AppState> {
   final bool? deleting;
 
   @override
-  AppState update(AppState state) {
+  AppState conclude(AppState state) {
     final nextCreating = creating ?? state.organisations.creator.creating;
     final nextDeleting = deleting ?? state.organisations.deleting;
 

@@ -10,7 +10,7 @@ class SetOrganisations extends Conclusion<AppState> {
   final Set<OrganisationModel> _organisations;
 
   @override
-  AppState update(AppState state) {
+  AppState conclude(AppState state) {
     var newSelector =
         state.organisations.selector.copyWith(all: _organisations);
     var newOrganisations = state.organisations.copyWith(selector: newSelector);

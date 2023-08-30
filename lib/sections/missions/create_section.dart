@@ -10,7 +10,7 @@ class CreateSection extends Consideration<AppState> {
   const CreateSection();
 
   @override
-  Future<void> process(BeliefSystem<AppState> beliefSystem) async {
+  Future<void> consider(BeliefSystem<AppState> beliefSystem) async {
     final queryParameters = {'name': beliefSystem.state.sections.newName};
     final uri = Uri.https(
         'section-creation-v6exb2sdca-uc.a.run.app', '', queryParameters);

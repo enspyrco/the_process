@@ -13,7 +13,7 @@ class CreateOrganisation extends Consideration<AppState> {
   final OrganisationModel _organisation;
 
   @override
-  Future<void> process(BeliefSystem<AppState> beliefSystem) async {
+  Future<void> consider(BeliefSystem<AppState> beliefSystem) async {
     beliefSystem.conclude(UpdateOrganisationsPage(creating: true));
 
     var organisation =

@@ -9,7 +9,7 @@ class SetProjects extends Conclusion<AppState> {
   final Set<ProjectState> _projects;
 
   @override
-  AppState update(AppState state) {
+  AppState conclude(AppState state) {
     var newProjects = state.projects.copyWith(all: _projects);
     return state.copyWith(projects: newProjects);
   }

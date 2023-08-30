@@ -9,7 +9,7 @@ class SetSelectedOrganisation extends Conclusion<AppState> {
   final OrganisationModel? organisation;
 
   @override
-  AppState update(AppState state) {
+  AppState conclude(AppState state) {
     var newSelector = (organisation == null)
         ? state.organisations.selector.copyWithDeselect()
         : state.organisations.selector.copyWith(selected: organisation);

@@ -17,7 +17,7 @@ class TapSections extends Consideration<AppState> {
   final bool _turnOff;
 
   @override
-  Future<void> process(BeliefSystem<AppState> beliefSystem) async {
+  Future<void> consider(BeliefSystem<AppState> beliefSystem) async {
     _subscription?.cancel();
     if (_turnOff) return;
 

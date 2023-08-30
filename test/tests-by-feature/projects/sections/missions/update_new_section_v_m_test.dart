@@ -11,7 +11,7 @@ void main() {
 
       const mission = UpdateNewSectionVM(name: 'testy');
 
-      final newState = mission.update(initialState);
+      final newState = mission.conclude(initialState);
 
       expect(newState.sections.newName, 'testy');
     });

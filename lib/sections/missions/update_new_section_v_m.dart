@@ -8,7 +8,7 @@ class UpdateNewSectionVM extends Conclusion<AppState> {
   final String? _name;
 
   @override
-  AppState update(AppState state) {
+  AppState conclude(AppState state) {
     var newSections =
         state.sections.copyWith(newName: _name ?? state.sections.newName);
     return state.copyWith(sections: newSections);

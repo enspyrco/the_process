@@ -9,7 +9,7 @@ class UpdateSectionsVM extends Conclusion<AppState> {
   final bool _creatingNewSection;
 
   @override
-  AppState update(AppState state) {
+  AppState conclude(AppState state) {
     var newSections =
         state.sections.copyWith(creatingNewSection: _creatingNewSection);
     return state.copyWith(sections: newSections);

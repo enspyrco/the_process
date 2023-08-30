@@ -8,7 +8,7 @@ class UpdateProjectsView extends Conclusion<AppState> {
   final bool? _creating;
 
   @override
-  AppState update(AppState state) {
+  AppState conclude(AppState state) {
     final nextCreating = _creating ?? state.projects.creating;
     final newProjects = state.projects.copyWith(creating: nextCreating);
     return state.copyWith(projects: newProjects);

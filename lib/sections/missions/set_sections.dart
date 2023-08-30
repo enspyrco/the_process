@@ -10,7 +10,7 @@ class SetSections extends Conclusion<AppState> {
   final List<SectionModel> _list;
 
   @override
-  AppState update(AppState state) {
+  AppState conclude(AppState state) {
     var newSections = state.sections.copyWith(list: _list);
     return state.copyWith(sections: newSections);
   }

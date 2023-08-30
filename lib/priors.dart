@@ -44,7 +44,7 @@ void initializeTheProcess() {
   initializeErrorHandling<AppState>();
   initializeAuthPlugin<AppState>(initialScreen: const HomeScreen());
   initializeIntrospection<AppState>();
-  initializeNavigationPlugin<AppState>();
+  initializeFraming<AppState>();
 
   /// Add services used in away missions.
   Locator.add<FirestoreService>(FlutterfireFirestoreService());

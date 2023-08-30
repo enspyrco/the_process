@@ -13,7 +13,7 @@ class CreateProject extends Consideration<AppState> {
   final ProjectState _project;
 
   @override
-  Future<void> process(BeliefSystem<AppState> beliefSystem) async {
+  Future<void> consider(BeliefSystem<AppState> beliefSystem) async {
     try {
       OrganisationModel? selected =
           beliefSystem.state.organisations.selector.selected;

@@ -7,7 +7,7 @@ import 'update_organisations_page.dart';
 
 class DeleteOrganisation extends Consideration<AppState> {
   @override
-  Future<void> process(BeliefSystem<AppState> beliefSystem) async {
+  Future<void> consider(BeliefSystem<AppState> beliefSystem) async {
     try {
       beliefSystem.conclude(UpdateOrganisationsPage(deleting: true));
 
