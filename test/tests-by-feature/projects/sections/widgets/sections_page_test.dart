@@ -15,7 +15,7 @@ void main() {
         (widgetTester) async {
       // Setup the harness and check it is in the initial state.
       final harness = WidgetTestHarness(
-        initialState: AppState.initial,
+        initialBeliefs: AppState.initial,
         innerWidget: const SectionsView(),
       );
       expect(harness.state.sections.creatingNewSection, false);
@@ -41,7 +41,7 @@ void main() {
 
       // Setup the harness and check it is in the initial state.
       final harness = WidgetTestHarness(
-        initialState: appState,
+        initialBeliefs: appState,
         innerWidget: const SectionsView(),
       );
       expect(harness.state.sections.creatingNewSection, true);

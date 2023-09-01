@@ -17,7 +17,7 @@ void main() {
             all: {projectA, projectB, projectC}, creating: false));
 
     final harness = WidgetTestHarness<AppState>(
-      initialState: initialState,
+      initialBeliefs: initialState,
       innerWidget: const ProjectsGrid(),
     );
 

@@ -40,8 +40,7 @@ class TapProjects extends Consideration<AppState> {
             .toSet();
         beliefSystem.conclude(SetProjects(models));
       },
-      onError: (Object error, StackTrace trace) =>
-          CreateErrorReport(error, trace),
+      onError: (Object error, StackTrace trace) => CreateFeedback(error, trace),
     );
   }
 

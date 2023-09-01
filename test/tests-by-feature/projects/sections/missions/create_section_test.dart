@@ -17,7 +17,7 @@ void main() {
         sections: initialState.sections.copyWith(newName: 'testy'),
       );
 
-      var beliefSystem = RecordingBeliefSystem<AppState>(state: state);
+      var beliefSystem = BeliefSystemWithMemory<AppState>(state: state);
 
       const mission = CreateSection();
       await mission.consider(beliefSystem);

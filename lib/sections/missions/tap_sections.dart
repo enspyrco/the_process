@@ -34,7 +34,7 @@ class TapSections extends Consideration<AppState> {
                 .toList()));
       },
       onError: (Object error, StackTrace trace) => beliefSystem.conclude(
-        CreateErrorReport(error, trace),
+        CreateFeedback(error, trace),
       ),
     );
   }

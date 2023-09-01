@@ -11,7 +11,7 @@ void main() {
       (WidgetTester tester) async {
     // Setup the harness and check it is in the initial state.
     final harness = WidgetTestHarness(
-      initialState: AppState.initial,
+      initialBeliefs: AppState.initial,
       innerWidget: const NewSectionItem(),
     );
     expect(harness.state.sections.newName, '');
@@ -27,7 +27,7 @@ void main() {
 
     await tester.enterText(textField, 'a');
 
-    expect(harness.recordedMissions,
+    expect(harness.recordedCognitions,
         contains(const UpdateNewSectionVM(name: 'a')));
   }, skip: true); // While we sort our Sections and how they will work
 
@@ -35,7 +35,7 @@ void main() {
       (WidgetTester tester) async {
     // setup the harness and check it is in the initial state
     final harness = WidgetTestHarness(
-      initialState: AppState.initial,
+      initialBeliefs: AppState.initial,
       innerWidget: const NewSectionItem(),
     );
     expect(harness.state.sections.newName, '');
@@ -51,6 +51,6 @@ void main() {
 
     await tester.tap(button);
 
-    expect(harness.recordedMissions, contains(const CreateSection()));
+    expect(harness.recordedCognitions, contains(const CreateSection()));
   }, skip: true); // While we sort our Sections and how they will work
 }

@@ -60,7 +60,7 @@ class TapOrganisations extends Consideration<AppState> {
         beliefSystem.consider(TapProjects(organisationId: nextSelected?.id));
       },
       onError: (Object error, StackTrace trace) => beliefSystem.conclude(
-        CreateErrorReport(error, trace),
+        CreateFeedback(error, trace),
       ),
     );
   }
