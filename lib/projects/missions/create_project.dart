@@ -16,10 +16,10 @@ class CreateProject extends Consideration<AppState> {
   Future<void> consider(BeliefSystem<AppState> beliefSystem) async {
     try {
       OrganisationModel? selected =
-          beliefSystem.state.organisations.selector.selected;
+          beliefSystem.beliefs.organisations.selector.selected;
       if (selected == null) return;
 
-      String uid = beliefSystem.state.auth.user.uid!;
+      String uid = beliefSystem.beliefs.auth.user.uid!;
 
       ProjectState project =
           _project.copyWith(ownerIds: {uid}, organisationIds: {selected.id});

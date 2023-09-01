@@ -17,7 +17,7 @@ class CreateOrganisation extends Consideration<AppState> {
     beliefSystem.conclude(UpdateOrganisationsPage(creating: true));
 
     var organisation =
-        _organisation.copyWith(ownerIds: {beliefSystem.state.auth.user.uid!});
+        _organisation.copyWith(ownerIds: {beliefSystem.beliefs.auth.user.uid!});
 
     var service = locate<FirestoreService>();
 

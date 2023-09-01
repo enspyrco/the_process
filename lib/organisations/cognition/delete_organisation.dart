@@ -11,7 +11,7 @@ class DeleteOrganisation extends Consideration<AppState> {
     try {
       beliefSystem.conclude(UpdateOrganisationsPage(deleting: true));
 
-      var selected = beliefSystem.state.organisations.selector.selected;
+      var selected = beliefSystem.beliefs.organisations.selector.selected;
       if (selected == null) return;
 
       var service = locate<FirestoreService>();

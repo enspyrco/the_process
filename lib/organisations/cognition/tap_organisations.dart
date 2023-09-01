@@ -39,10 +39,10 @@ class TapOrganisations extends Consideration<AppState> {
 
         // Find any added organisatons.
         var added = organisations
-            .difference(beliefSystem.state.organisations.selector.all)
+            .difference(beliefSystem.beliefs.organisations.selector.all)
             .firstOrNull;
         // Find any removed organisatons.
-        var removed = beliefSystem.state.organisations.selector.all
+        var removed = beliefSystem.beliefs.organisations.selector.all
             .difference(organisations)
             .firstOrNull;
 
@@ -52,7 +52,7 @@ class TapOrganisations extends Consideration<AppState> {
         OrganisationModel? nextSelected;
         if (removed == null) {
           nextSelected =
-              added ?? beliefSystem.state.organisations.selector.selected;
+              added ?? beliefSystem.beliefs.organisations.selector.selected;
         }
 
         beliefSystem.conclude(SetOrganisations(organisations));

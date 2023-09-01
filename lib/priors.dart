@@ -82,7 +82,7 @@ class AstroBase extends StatelessWidget {
           Expanded(
             flex: 1,
             child: Material(
-              child: AstroInspectorScreen(locate<IntrospectionHabit>().stream),
+              child: IntrospectionScreen(locate<IntrospectionHabit>().stream),
             ),
           ),
         Expanded(

@@ -11,7 +11,7 @@ class CreateSection extends Consideration<AppState> {
 
   @override
   Future<void> consider(BeliefSystem<AppState> beliefSystem) async {
-    final queryParameters = {'name': beliefSystem.state.sections.newName};
+    final queryParameters = {'name': beliefSystem.beliefs.sections.newName};
     final uri = Uri.https(
         'section-creation-v6exb2sdca-uc.a.run.app', '', queryParameters);
     final response = await _client.post(uri);
