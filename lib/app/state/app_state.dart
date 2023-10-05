@@ -1,10 +1,10 @@
-import 'package:identity_in_perception/identity_in_perception.dart';
 import 'package:error_correction_in_perception/error_correction_in_perception.dart';
 import 'package:framing_in_perception/framing_in_perception.dart';
 import 'package:abstractions/identity.dart';
 import 'package:abstractions/beliefs.dart';
 import 'package:abstractions/error_correction.dart';
 import 'package:abstractions/framing.dart';
+import 'package:percepts/percepts.dart';
 
 import '../../organisations/models/organisations_state.dart';
 import '../../projects/models/projects_state.dart';
@@ -17,7 +17,7 @@ class AppState
         ErrorCorrectionConcept,
         IdentityConcept {
   AppState({
-    required this.auth,
+    required this.identity,
     required this.error,
     required this.framing,
     required this.organisations,
@@ -26,7 +26,7 @@ class AppState
   });
 
   @override
-  final IdentityBeliefs auth;
+  final DefaultIdentityBeliefs identity;
   @override
   final DefaultErrorCorrectionBeliefs error;
   @override
@@ -41,7 +41,7 @@ class AppState
         sections: SectionsState.initial,
         organisations: OrganisationsState.initial,
         framing: DefaultFramingBeliefs.initial,
-        auth: AuthBeliefSystem.initialBeliefs(),
+        identity: DefaultIdentityBeliefs.initial,
         error: DefaultErrorCorrectionBeliefs.initial,
       );
 
@@ -52,11 +52,11 @@ class AppState
     SectionsState? sections,
     DefaultFramingBeliefs? framing,
     DefaultErrorCorrectionBeliefs? error,
-    IdentityBeliefs? auth,
+    DefaultIdentityBeliefs? identity,
   }) =>
       AppState(
         framing: framing ?? this.framing,
-        auth: auth ?? this.auth,
+        identity: identity ?? this.identity,
         error: error ?? this.error,
         organisations: organisations ?? this.organisations,
         projects: projects ?? this.projects,
@@ -66,7 +66,7 @@ class AppState
   @override
   toJson() => {
         'navigation': framing.toJson(),
-        'auth': auth.toJson(),
+        'identity': identity.toJson(),
         'error': error.toJson(),
         'organisations': organisations.toJson(),
         'projects': projects.toJson(),

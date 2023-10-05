@@ -19,18 +19,13 @@ dependencies:
     git: https://github.com/enspyrco/locator_for_perception
   introspection:
     git: https://github.com/enspyrco/introspection
-  identity_in_perception:
-    git: https://github.com/enspyrco/identity_in_perception
   error_correction_in_perception:
     git: https://github.com/enspyrco/error_correction_in_perception
   framing_in_perception:
     git: https://github.com/enspyrco/framing_in_perception
   
-  # auth
-  firebase_auth_service_interface:
-    git: https://github.com/enspyrco/firebase_auth_service_interface
-  flutterfire_firebase_auth_service:
-    git: https://github.com/enspyrco/flutterfire_firebase_auth_service
+  flutterfire_firebase_auth_for_perception:
+    git: https://github.com/enspyrco/flutterfire_firebase_auth_for_perception
 
   # firestore
   firestore_service_interface:

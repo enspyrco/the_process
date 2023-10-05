@@ -1,3 +1,4 @@
+import 'package:percepts/percepts.dart';
 import 'package:test_utils_for_perception/test_utils_for_perception.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:the_process/app/state/app_state.dart';
@@ -12,8 +13,9 @@ void main() {
       var initialState = AppState.initial;
 
       var state = initialState.copyWith(
-        auth: initialState.auth.copyWith(
-            user: UserAuthStateTestDouble(signedIn: SignedInState.checking)),
+        identity: initialState.identity.copyWith(
+            userAuthState:
+                const DefaultUserAuthState(signedIn: SignedInState.checking)),
         sections: initialState.sections.copyWith(newName: 'testy'),
       );
 

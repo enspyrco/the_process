@@ -19,7 +19,7 @@ class CreateProject extends Consideration<AppState> {
           beliefSystem.beliefs.organisations.selector.selected;
       if (selected == null) return;
 
-      String uid = beliefSystem.beliefs.auth.user.uid!;
+      String uid = beliefSystem.beliefs.identity.userAuthState.uid!;
 
       ProjectState project =
           _project.copyWith(ownerIds: {uid}, organisationIds: {selected.id});
