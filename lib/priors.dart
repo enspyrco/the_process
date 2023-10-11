@@ -42,7 +42,8 @@ Future<void> setupPriors() async {
 void initializeTheProcess() {
   /// Perform individual plugin initialization.
   initializeErrorHandling<AppState>();
-  initializeAuthPlugin<AppState>(initialScreen: const HomeScreen());
+  initializeFlutterfireFirebaseAuth<AppState>(
+      initialScreen: const HomeScreen());
   initializeIntrospection<AppState>();
   initializeFraming<AppState>();
 
