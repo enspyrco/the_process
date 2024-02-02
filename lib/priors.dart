@@ -1,5 +1,5 @@
-import 'package:flutterfire_firestore_service/flutterfire_firestore_service.dart';
 import 'package:flutterfire_firebase_auth_for_perception/flutterfire_firebase_auth_for_perception.dart';
+import 'package:flutterfire_firestore_service/flutterfire_firestore_service.dart';
 import 'package:percepts/percepts.dart';
 import 'package:error_correction_in_perception/error_correction_in_perception.dart';
 import 'package:introspection/introspection.dart';
@@ -42,8 +42,7 @@ Future<void> setupPriors() async {
 void initializeTheProcess() {
   /// Perform individual plugin initialization.
   initializeErrorHandling<AppState>();
-  initializeFlutterfireFirebaseAuth<AppState>(
-      initialScreen: const HomeScreen());
+  initializeIdentity<AppState>(initialScreen: const HomeScreen());
   initializeIntrospection<AppState>();
   initializeFraming<AppState>();
 
@@ -72,8 +71,8 @@ void initializeTheProcess() {
   );
 }
 
-class AstroBase extends StatelessWidget {
-  const AstroBase({Key? key}) : super(key: key);
+class OriginOPerception extends StatelessWidget {
+  const OriginOPerception({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -89,8 +88,10 @@ class AstroBase extends StatelessWidget {
         Expanded(
           flex: 1,
           child: FramingBuilder<AppState>(
-            onInit: (beliefSystem) =>
-                beliefSystem.consider(const ObservingIdentity<AppState>()),
+            onInit: (beliefSystem) => beliefSystem.consider(
+              const ObservingIdentity<AppState,
+                  FlutterfireFirebaseAuthSubsystem>(),
+            ),
           ),
         ),
       ],

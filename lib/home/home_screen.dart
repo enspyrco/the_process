@@ -54,7 +54,7 @@ class _BasicAppBarState extends State<BasicAppBar> {
               NotificationsButton(),
               AvatarMenuButton<AppState>(
                 options: {
-                  MenuOption('Sign Out', SignOut<AppState>()),
+                  MenuOption('Sign Out', SigningOut<AppState>()),
                   MenuOption('Manage Organisations',
                       AddTopLayer<AppState>(ManageOrganisationsPageState())),
                 },
