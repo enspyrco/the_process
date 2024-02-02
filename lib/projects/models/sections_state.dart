@@ -1,9 +1,9 @@
-import 'package:astro_types/json_types.dart';
-import 'package:astro_types/state_types.dart';
+import 'package:json_utils/json_utils.dart';
+import 'package:abstractions/beliefs.dart';
 
 import 'section_model.dart';
 
-class SectionsState implements AstroState {
+class SectionsState implements Belief {
   const SectionsState({
     required this.newName,
     required this.list,

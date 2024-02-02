@@ -1,4 +1,4 @@
-import 'package:astro_navigation/astro_navigation.dart';
+import 'package:framing_in_perception/framing_in_perception.dart';
 import 'package:flutter/material.dart';
 
 import '../../../shared/extensions/build_context_extensions.dart';
@@ -22,7 +22,8 @@ class ProjectItem extends StatelessWidget {
         ),
         child: InkWell(
           splashColor: Colors.blue.withAlpha(30),
-          onTap: () => context.land(const PushRoute(ProjectDetailsPageState())),
+          onTap: () =>
+              context.land(const AddTopLayer(ProjectDetailsPageState())),
           child: Center(
               child: Text(project.name,
                   style: Theme.of(context).textTheme.headline5)),

@@ -1,15 +1,15 @@
-import 'package:astro_types/core_types.dart';
+import 'package:abstractions/beliefs.dart';
 
-import '../../app/state/app_state.dart';
+import '../../app/app_beliefs.dart';
 
-class UpdateOrganisationsPage extends LandingMission<AppState> {
+class UpdateOrganisationsPage extends Conclusion<AppBeliefs> {
   UpdateOrganisationsPage({this.creating, this.deleting});
 
   final bool? creating;
   final bool? deleting;
 
   @override
-  AppState landingInstructions(AppState state) {
+  AppBeliefs conclude(AppBeliefs state) {
     final nextCreating = creating ?? state.organisations.creator.creating;
     final nextDeleting = deleting ?? state.organisations.deleting;
 

@@ -1,7 +1,7 @@
-import 'package:astro_core/astro_core.dart';
-import 'package:astro_test_utils/astro_widgets_test_utils.dart';
+import 'package:percepts/percepts.dart';
+import 'package:test_utils_for_perception/test_utils_for_perception.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:the_process/app/state/app_state.dart';
+import 'package:the_process/app/app_beliefs.dart';
 import 'package:the_process/projects/models/section_model.dart';
 import 'package:the_process/projects/widgets/project-detail/new_section_item.dart';
 import 'package:the_process/projects/widgets/project-detail/sections_view.dart';
@@ -15,7 +15,7 @@ void main() {
         (widgetTester) async {
       // Setup the harness and check it is in the initial state.
       final harness = WidgetTestHarness(
-        initialState: AppState.initialValue(),
+        initialBeliefs: AppBeliefs.initial,
         innerWidget: const SectionsView(),
       );
       expect(harness.state.sections.creatingNewSection, false);
@@ -34,14 +34,14 @@ void main() {
     testWidgets(
         'should show waiting indicator given creatingNewSection is true',
         (widgetTester) async {
-      var initialAppState = AppState.initialValue();
+      var initialAppState = AppBeliefs.initial;
       var appState = initialAppState.copyWith(
           sections:
               initialAppState.sections.copyWith(creatingNewSection: true));
 
       // Setup the harness and check it is in the initial state.
       final harness = WidgetTestHarness(
-        initialState: appState,
+        initialBeliefs: appState,
         innerWidget: const SectionsView(),
       );
       expect(harness.state.sections.creatingNewSection, true);

@@ -1,6 +1,6 @@
-import 'package:astro_test_utils/astro_widgets_test_utils.dart';
+import 'package:test_utils_for_perception/test_utils_for_perception.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:the_process/app/state/app_state.dart';
+import 'package:the_process/app/app_beliefs.dart';
 import 'package:the_process/projects/models/project_state.dart';
 import 'package:the_process/projects/models/projects_state.dart';
 import 'package:the_process/projects/widgets/grid-view/new_project_item.dart';
@@ -12,12 +12,12 @@ void main() {
     var projectA = ProjectState.initWith(name: 'a');
     var projectB = ProjectState.initWith(name: 'b');
     var projectC = ProjectState.initWith(name: 'c');
-    AppState initialState = AppState.initialValue().copyWith(
+    AppBeliefs initialState = AppBeliefs.initial.copyWith(
         projects: ProjectsState(
             all: {projectA, projectB, projectC}, creating: false));
 
-    final harness = WidgetTestHarness<AppState>(
-      initialState: initialState,
+    final harness = WidgetTestHarness<AppBeliefs>(
+      initialBeliefs: initialState,
       innerWidget: const ProjectsGrid(),
     );
 

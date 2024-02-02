@@ -1,4 +1,4 @@
-import 'package:astro_test_utils/astro_widgets_test_utils.dart';
+import 'package:test_utils_for_perception/test_utils_for_perception.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:the_process/app/state/app_state.dart';
 import 'package:the_process/home/home_screen.dart';
@@ -10,7 +10,7 @@ void main() {
     testWidgets('builds BasicAppBar, OrganisationSelector, ProjectsGrid',
         ((tester) async {
       final harness = WidgetTestHarness(
-        initialState: AppState.initialValue(),
+        initialBeliefs: AppBeliefs.initial,
         innerWidget: const HomeScreen(),
       );
       await tester.pumpWidget(harness.widget);

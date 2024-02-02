@@ -1,10 +1,10 @@
 // ignore_for_file: not_iterable_spread
 
-import 'package:astro_types/json_types.dart';
-import 'package:astro_types/state_types.dart';
 import 'package:firestore_service_interface/firestore_service_interface.dart';
+import 'package:json_utils/json_utils.dart';
+import 'package:abstractions/beliefs.dart';
 
-class ProjectState implements AstroState {
+class ProjectState implements Belief {
   const ProjectState({
     required this.id,
     required this.name,
@@ -46,11 +46,13 @@ class ProjectState implements AstroState {
   factory ProjectState.fromDocument(Document doc) => ProjectState(
         id: doc.id,
         name: doc.fields['name'] as String,
-        ownerIds: <String>{...doc.fields['ownerIds']},
-        adminIds: <String>{...doc.fields['adminIds']},
-        memberIds: <String>{...doc.fields['memberIds']},
-        organisationIds: <String>{...doc.fields['organisationIds']},
-        sectionIds: <String>{...doc.fields['sectionIds']},
+        ownerIds: <String>{...?(doc.fields['ownerIds'] as List<String>?)},
+        adminIds: <String>{...?(doc.fields['adminIds'] as List<String>?)},
+        memberIds: <String>{...?(doc.fields['memberIds'] as List<String>?)},
+        organisationIds: <String>{
+          ...?(doc.fields['organisationIds'] as List<String>?)
+        },
+        sectionIds: <String>{...?(doc.fields['sectionIds'] as List<String>?)},
       );
 
   @override

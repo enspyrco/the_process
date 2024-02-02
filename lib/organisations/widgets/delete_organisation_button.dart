@@ -1,17 +1,17 @@
-import 'package:astro_core/astro_core.dart';
+import 'package:percepts/percepts.dart';
 import 'package:flutter/material.dart';
 
-import '../../app/state/app_state.dart';
+import '../../app/app_beliefs.dart';
 import '../../shared/extensions/build_context_extensions.dart';
-import '../missions/delete_organisation.dart';
+import '../cognition/delete_organisation.dart';
 
 class DeleteOrganisationButton extends StatelessWidget {
   const DeleteOrganisationButton({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return OnStateChangeBuilder<AppState, bool>(
-      transformer: (state) => state.organisations.deleting,
+    return StreamOfConsciousness<AppBeliefs, bool>(
+      infer: (state) => state.organisations.deleting,
       builder: (context, deleting) => (deleting)
           ? const SizedBox(
               width: 30,

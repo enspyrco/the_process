@@ -1,11 +1,11 @@
-import 'package:astro_core/astro_core.dart';
+import 'package:percepts/percepts.dart';
 import 'package:flutter/material.dart';
 
-import '../../app/state/app_state.dart';
+import '../../app/app_beliefs.dart';
 import '../../projects/missions/tap_projects.dart';
 import '../../shared/extensions/build_context_extensions.dart';
-import '../missions/set_selected_organisation.dart';
-import '../missions/tap_organisations.dart';
+import '../cognition/set_selected_organisation.dart';
+import '../cognition/tap_organisations.dart';
 import '../models/organisation_model.dart';
 import '../models/organisation_selector_view_model.dart';
 
@@ -14,11 +14,11 @@ class OrganisationSelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return OnStateChangeBuilder<AppState, OrganisationSelectorViewModel>(
-        onInit: (missionControl) => missionControl.launch(TapOrganisations()),
-        onDispose: (missionControl) =>
-            missionControl.launch(TapOrganisations(turnOff: true)),
-        transformer: (state) => state.organisations.selector,
+    return StreamOfConsciousness<AppBeliefs, OrganisationSelectorViewModel>(
+        onInit: (beliefSystem) => beliefSystem.consider(TapOrganisations()),
+        onDispose: (beliefSystem) =>
+            beliefSystem.consider(TapOrganisations(turnOff: true)),
+        infer: (state) => state.organisations.selector,
         builder: (context, selector) {
           return DropdownButton<OrganisationModel>(
             value: selector.selected,

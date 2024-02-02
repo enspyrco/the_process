@@ -1,7 +1,7 @@
-import 'package:astro_core/astro_core.dart';
+import 'package:percepts/percepts.dart';
 import 'package:flutter/material.dart';
 
-import '../../../app/state/app_state.dart';
+import '../../../app/app_beliefs.dart';
 import '../../../shared/extensions/build_context_extensions.dart';
 import '../../missions/create_project.dart';
 import '../../models/project_state.dart';
@@ -12,8 +12,8 @@ class NewProjectItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return OnStateChangeBuilder<AppState, bool>(
-        transformer: (state) => state.projects.creating,
+    return StreamOfConsciousness<AppBeliefs, bool>(
+        infer: (state) => state.projects.creating,
         builder: (context, creating) {
           return Padding(
             padding: const EdgeInsets.all(25.0),

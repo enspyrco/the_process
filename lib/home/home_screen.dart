@@ -1,8 +1,8 @@
-import 'package:astro_auth/astro_auth.dart';
-import 'package:astro_navigation/astro_navigation.dart';
+import 'package:flutterfire_firebase_auth_for_perception/flutterfire_firebase_auth_for_perception.dart';
+import 'package:framing_in_perception/framing_in_perception.dart';
 import 'package:flutter/material.dart';
 
-import '../app/state/app_state.dart';
+import '../app/app_beliefs.dart';
 import '../organisations/routes/manage_organisations_page_state.dart';
 import '../organisations/widgets/organisation_selector.dart';
 import '../projects/widgets/grid-view/projects_grid.dart';
@@ -14,15 +14,15 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const BasicAppBar(),
+    return const Scaffold(
+      appBar: BasicAppBar(),
       body: Column(
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [OrganisationSelector()],
+            children: [OrganisationSelector()],
           ),
-          const ProjectsGrid()
+          ProjectsGrid()
         ],
       ),
     );
@@ -42,21 +42,21 @@ class BasicAppBar extends StatefulWidget implements PreferredSizeWidget {
 class _BasicAppBarState extends State<BasicAppBar> {
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       mainAxisAlignment: MainAxisAlignment.end,
       children: <Widget>[
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
+          padding: EdgeInsets.symmetric(horizontal: 10),
           child: Row(
-            children: const <Widget>[
+            children: <Widget>[
               LogoIcon(),
               Spacer(),
               NotificationsButton(),
-              AvatarMenuButton<AppState>(
+              AvatarMenuButton<AppBeliefs>(
                 options: {
-                  MenuOption('Sign Out', SignOut<AppState>()),
+                  MenuOption('Sign Out', SigningOut<AppBeliefs>()),
                   MenuOption('Manage Organisations',
-                      PushRoute<AppState>(ManageOrganisationsPageState())),
+                      AddTopLayer<AppBeliefs>(ManageOrganisationsPageState())),
                 },
               ),
             ],

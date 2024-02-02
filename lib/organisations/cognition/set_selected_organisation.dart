@@ -1,15 +1,15 @@
-import 'package:astro_types/core_types.dart';
+import 'package:abstractions/beliefs.dart';
 
-import '../../app/state/app_state.dart';
+import '../../app/app_beliefs.dart';
 import '../models/organisation_model.dart';
 
-class SetSelectedOrganisation extends LandingMission<AppState> {
+class SetSelectedOrganisation extends Conclusion<AppBeliefs> {
   SetSelectedOrganisation(this.organisation);
 
   final OrganisationModel? organisation;
 
   @override
-  AppState landingInstructions(AppState state) {
+  AppBeliefs conclude(AppBeliefs state) {
     var newSelector = (organisation == null)
         ? state.organisations.selector.copyWithDeselect()
         : state.organisations.selector.copyWith(selected: organisation);

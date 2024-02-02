@@ -1,29 +1,31 @@
-import 'package:astro_test_utils/astro_widgets_test_utils.dart';
-import 'package:astro_types/auth_types.dart';
+import 'package:percepts/percepts.dart';
+import 'package:test_utils_for_perception/test_utils_for_perception.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:the_process/app/state/app_state.dart';
+import 'package:the_process/app/app_beliefs.dart';
 import 'package:the_process/sections/missions/create_section.dart';
 import 'package:the_process/sections/missions/update_sections_v_m.dart';
+import 'package:types_for_auth/types_for_auth.dart';
 
 void main() {
   group('CreateSection', () {
     test('dispatches UpdateSectionsVM and calls DatabaseServce.createSection',
         () async {
-      var initialState = AppState.initialValue();
+      var initialState = AppBeliefs.initial;
 
       var state = initialState.copyWith(
-        auth: initialState.auth.copyWith(
-            user: UserAuthStateTestDouble(signedIn: SignedInState.checking)),
+        identity: initialState.identity.copyWith(
+            userAuthState:
+                const DefaultUserAuthState(signedIn: SignedInState.checking)),
         sections: initialState.sections.copyWith(newName: 'testy'),
       );
 
-      var missionControl = RecordingMissionControl<AppState>(state: state);
+      var beliefSystem = BeliefSystemWithMemory<AppBeliefs>(state: state);
 
       const mission = CreateSection();
-      await mission.flightPlan(missionControl);
+      await mission.consider(beliefSystem);
 
       expect(
-          missionControl
+          beliefSystem
               .recorded(const UpdateSectionsVM(creatingNewSection: true)),
           true);
     });

@@ -1,14 +1,14 @@
-import 'package:astro_types/core_types.dart';
+import 'package:abstractions/beliefs.dart';
 
-import '../../app/state/app_state.dart';
+import '../../app/app_beliefs.dart';
 
-class UpdateNewSectionVM extends LandingMission<AppState> {
+class UpdateNewSectionVM extends Conclusion<AppBeliefs> {
   const UpdateNewSectionVM({String? name}) : _name = name;
 
   final String? _name;
 
   @override
-  AppState landingInstructions(AppState state) {
+  AppBeliefs conclude(AppBeliefs state) {
     var newSections =
         state.sections.copyWith(newName: _name ?? state.sections.newName);
     return state.copyWith(sections: newSections);
