@@ -2,12 +2,12 @@ import 'package:locator_for_perception/locator_for_perception.dart';
 import 'package:firestore_service_interface/firestore_service_interface.dart';
 import 'package:abstractions/beliefs.dart';
 
-import '../../app/state/app_state.dart';
+import '../../app/app_beliefs.dart';
 import 'update_organisations_page.dart';
 
-class DeleteOrganisation extends Consideration<AppState> {
+class DeleteOrganisation extends Consideration<AppBeliefs> {
   @override
-  Future<void> consider(BeliefSystem<AppState> beliefSystem) async {
+  Future<void> consider(BeliefSystem<AppBeliefs> beliefSystem) async {
     try {
       beliefSystem.conclude(UpdateOrganisationsPage(deleting: true));
 

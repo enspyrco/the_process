@@ -6,7 +6,7 @@ import 'package:collection/collection.dart';
 import 'package:firestore_service_interface/firestore_service_interface.dart';
 import 'package:abstractions/beliefs.dart';
 
-import '../../app/state/app_state.dart';
+import '../../app/app_beliefs.dart';
 import '../../projects/missions/tap_projects.dart';
 import '../models/organisation_model.dart';
 import 'set_organisations.dart';
@@ -14,13 +14,13 @@ import 'set_selected_organisation.dart';
 
 StreamSubscription<List<Document>>? _subscription;
 
-class TapOrganisations extends Consideration<AppState> {
+class TapOrganisations extends Consideration<AppBeliefs> {
   TapOrganisations({bool turnOff = false}) : _turnOff = turnOff;
 
   final bool _turnOff;
 
   @override
-  Future<void> consider(BeliefSystem<AppState> beliefSystem) async {
+  Future<void> consider(BeliefSystem<AppBeliefs> beliefSystem) async {
     await _subscription?.cancel();
     if (_turnOff) return;
 

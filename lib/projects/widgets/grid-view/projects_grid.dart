@@ -1,7 +1,7 @@
 import 'package:percepts/percepts.dart';
 import 'package:flutter/material.dart';
 
-import '../../../app/state/app_state.dart';
+import '../../../app/app_beliefs.dart';
 import '../../models/project_state.dart';
 import 'new_project_item.dart';
 import 'project_item.dart';
@@ -11,7 +11,7 @@ class ProjectsGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StreamOfConsciousness<AppState, Set<ProjectState>>(
+    return StreamOfConsciousness<AppBeliefs, Set<ProjectState>>(
         infer: (state) => state.projects.all,
         builder: (context, projects) {
           return GridView.count(

@@ -1,7 +1,7 @@
 import 'package:percepts/percepts.dart';
 import 'package:flutter/material.dart';
 
-import '../../app/state/app_state.dart';
+import '../../app/app_beliefs.dart';
 import '../../projects/missions/tap_projects.dart';
 import '../../shared/extensions/build_context_extensions.dart';
 import '../cognition/set_selected_organisation.dart';
@@ -14,7 +14,7 @@ class OrganisationSelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StreamOfConsciousness<AppState, OrganisationSelectorViewModel>(
+    return StreamOfConsciousness<AppBeliefs, OrganisationSelectorViewModel>(
         onInit: (beliefSystem) => beliefSystem.consider(TapOrganisations()),
         onDispose: (beliefSystem) =>
             beliefSystem.consider(TapOrganisations(turnOff: true)),

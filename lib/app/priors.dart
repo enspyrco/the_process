@@ -10,13 +10,13 @@ import 'package:firestore_service_interface/firestore_service_interface.dart';
 import 'package:flutter/material.dart';
 import 'package:abstractions/beliefs.dart';
 
-import 'app/state/app_state.dart';
-import 'firebase_options.dart';
-import 'home/home_screen.dart';
-import 'organisations/routes/manage_organisations_page_state.dart';
-import 'organisations/routes/manage_organisations_screen.dart';
-import 'projects/routes/project_details/project_details_page_state.dart';
-import 'projects/routes/project_details/project_details_screen.dart';
+import 'app_beliefs.dart';
+import '../firebase_options.dart';
+import '../home/home_screen.dart';
+import '../organisations/routes/manage_organisations_page_state.dart';
+import '../organisations/routes/manage_organisations_screen.dart';
+import '../projects/routes/project_details/project_details_page_state.dart';
+import '../projects/routes/project_details/project_details_screen.dart';
 
 Future<void> setupPriors() async {
   /// Setup FlutterFire
@@ -26,25 +26,25 @@ Future<void> setupPriors() async {
   /// Setup Locator so plugins can add SystemChecks & Routes, configure the AppState, etc.
   Locator.add<Habits>(DefaultHabits());
   Locator.add<PageGenerator>(DefaultPageGenerator());
-  Locator.add<AppState>(AppState.initial);
+  Locator.add<AppBeliefs>(AppBeliefs.initial);
 
   /// Perform any final initialization by the app such as setting up routes.
   initializeTheProcess();
 
   /// Finally, create our BeliefSystem and add to the Locator.
-  Locator.add<BeliefSystem<AppState>>(DefaultBeliefSystem<AppState>(
-      beliefs: locate<AppState>(),
-      errorHandlers: DefaultErrorHandlers<AppState>(),
+  Locator.add<BeliefSystem<AppBeliefs>>(DefaultBeliefSystem<AppBeliefs>(
+      beliefs: locate<AppBeliefs>(),
+      errorHandlers: DefaultErrorHandlers<AppBeliefs>(),
       habits: locate<Habits>(),
       beliefSystemFactory: ParentingBeliefSystem.new));
 }
 
 void initializeTheProcess() {
   /// Perform individual plugin initialization.
-  initializeErrorHandling<AppState>();
-  initializeIdentity<AppState>(initialScreen: const HomeScreen());
-  initializeIntrospection<AppState>();
-  initializeFraming<AppState>();
+  initializeErrorHandling<AppBeliefs>();
+  initializeIdentity<AppBeliefs>(initialScreen: const HomeScreen());
+  initializeIntrospection<AppBeliefs>();
+  initializeFraming<AppBeliefs>();
 
   /// Add services used in away missions.
   Locator.add<FirestoreService>(FlutterfireFirestoreService());
@@ -87,9 +87,9 @@ class OriginOPerception extends StatelessWidget {
           ),
         Expanded(
           flex: 1,
-          child: FramingBuilder<AppState>(
+          child: FramingBuilder<AppBeliefs>(
             onInit: (beliefSystem) => beliefSystem.consider(
-              const ObservingIdentity<AppState,
+              const ObservingIdentity<AppBeliefs,
                   FlutterfireFirebaseAuthSubsystem>(),
             ),
           ),

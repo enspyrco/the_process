@@ -1,16 +1,16 @@
 import 'package:abstractions/beliefs.dart';
 
-import '../../app/state/app_state.dart';
+import '../../app/app_beliefs.dart';
 import '../models/organisation_model.dart';
 
-class SetOrganisations extends Conclusion<AppState> {
+class SetOrganisations extends Conclusion<AppBeliefs> {
   SetOrganisations(Set<OrganisationModel> organisations)
       : _organisations = organisations;
 
   final Set<OrganisationModel> _organisations;
 
   @override
-  AppState conclude(AppState state) {
+  AppBeliefs conclude(AppBeliefs state) {
     var newSelector =
         state.organisations.selector.copyWith(all: _organisations);
     var newOrganisations = state.organisations.copyWith(selector: newSelector);

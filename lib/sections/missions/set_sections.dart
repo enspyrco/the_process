@@ -1,16 +1,16 @@
 import 'package:json_utils/json_utils.dart';
 import 'package:abstractions/beliefs.dart';
 
-import '../../app/state/app_state.dart';
+import '../../app/app_beliefs.dart';
 import '../../projects/models/section_model.dart';
 
-class SetSections extends Conclusion<AppState> {
+class SetSections extends Conclusion<AppBeliefs> {
   const SetSections({required List<SectionModel> list}) : _list = list;
 
   final List<SectionModel> _list;
 
   @override
-  AppState conclude(AppState state) {
+  AppBeliefs conclude(AppBeliefs state) {
     var newSections = state.sections.copyWith(list: _list);
     return state.copyWith(sections: newSections);
   }

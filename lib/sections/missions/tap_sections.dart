@@ -5,19 +5,19 @@ import 'package:locator_for_perception/locator_for_perception.dart';
 import 'package:firestore_service_interface/firestore_service_interface.dart';
 import 'package:abstractions/beliefs.dart';
 
-import '../../app/state/app_state.dart';
+import '../../app/app_beliefs.dart';
 import '../../projects/models/section_model.dart';
 import 'set_sections.dart';
 
 StreamSubscription<List<Document>>? _subscription;
 
-class TapSections extends Consideration<AppState> {
+class TapSections extends Consideration<AppBeliefs> {
   const TapSections({bool turnOff = false}) : _turnOff = turnOff;
 
   final bool _turnOff;
 
   @override
-  Future<void> consider(BeliefSystem<AppState> beliefSystem) async {
+  Future<void> consider(BeliefSystem<AppBeliefs> beliefSystem) async {
     _subscription?.cancel();
     if (_turnOff) return;
 

@@ -6,17 +6,17 @@ import 'package:abstractions/error_correction.dart';
 import 'package:abstractions/framing.dart';
 import 'package:percepts/percepts.dart';
 
-import '../../organisations/models/organisations_state.dart';
-import '../../projects/models/projects_state.dart';
-import '../../projects/models/sections_state.dart';
+import '../organisations/models/organisations_state.dart';
+import '../projects/models/projects_state.dart';
+import '../projects/models/sections_state.dart';
 
-class AppState
+class AppBeliefs
     implements
         CoreBeliefs,
         FramingConcept,
         ErrorCorrectionConcept,
         IdentityConcept {
-  AppState({
+  AppBeliefs({
     required this.identity,
     required this.error,
     required this.framing,
@@ -36,7 +36,7 @@ class AppState
   ProjectsState projects;
   SectionsState sections;
 
-  static AppState get initial => AppState(
+  static AppBeliefs get initial => AppBeliefs(
         projects: ProjectsState.initial,
         sections: SectionsState.initial,
         organisations: OrganisationsState.initial,
@@ -46,7 +46,7 @@ class AppState
       );
 
   @override
-  AppState copyWith({
+  AppBeliefs copyWith({
     OrganisationsState? organisations,
     ProjectsState? projects,
     SectionsState? sections,
@@ -54,7 +54,7 @@ class AppState
     DefaultErrorCorrectionBeliefs? error,
     DefaultIdentityBeliefs? identity,
   }) =>
-      AppState(
+      AppBeliefs(
         framing: framing ?? this.framing,
         identity: identity ?? this.identity,
         error: error ?? this.error,

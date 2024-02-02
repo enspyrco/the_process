@@ -1,7 +1,7 @@
 import 'package:percepts/percepts.dart';
 import 'package:test_utils_for_perception/test_utils_for_perception.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:the_process/app/state/app_state.dart';
+import 'package:the_process/app/app_beliefs.dart';
 import 'package:the_process/projects/models/section_model.dart';
 import 'package:the_process/projects/widgets/project-detail/new_section_item.dart';
 import 'package:the_process/projects/widgets/project-detail/sections_view.dart';
@@ -15,7 +15,7 @@ void main() {
         (widgetTester) async {
       // Setup the harness and check it is in the initial state.
       final harness = WidgetTestHarness(
-        initialBeliefs: AppState.initial,
+        initialBeliefs: AppBeliefs.initial,
         innerWidget: const SectionsView(),
       );
       expect(harness.state.sections.creatingNewSection, false);
@@ -34,7 +34,7 @@ void main() {
     testWidgets(
         'should show waiting indicator given creatingNewSection is true',
         (widgetTester) async {
-      var initialAppState = AppState.initial;
+      var initialAppState = AppBeliefs.initial;
       var appState = initialAppState.copyWith(
           sections:
               initialAppState.sections.copyWith(creatingNewSection: true));

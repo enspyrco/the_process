@@ -5,13 +5,13 @@ import 'package:locator_for_perception/locator_for_perception.dart';
 import 'package:firestore_service_interface/firestore_service_interface.dart';
 import 'package:abstractions/beliefs.dart';
 
-import '../../app/state/app_state.dart';
+import '../../app/app_beliefs.dart';
 import '../models/project_state.dart';
 import 'set_projects.dart';
 
 StreamSubscription<List<Document>>? _subscription;
 
-class TapProjects extends Consideration<AppState> {
+class TapProjects extends Consideration<AppBeliefs> {
   const TapProjects({required String? organisationId, bool turnOff = false})
       : _organisationId = organisationId,
         _turnOff = turnOff;
@@ -20,7 +20,7 @@ class TapProjects extends Consideration<AppState> {
   final bool _turnOff;
 
   @override
-  Future<void> consider(BeliefSystem<AppState> beliefSystem) async {
+  Future<void> consider(BeliefSystem<AppBeliefs> beliefSystem) async {
     await _subscription?.cancel();
     if (_turnOff) return;
 

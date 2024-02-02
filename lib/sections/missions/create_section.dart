@@ -1,16 +1,16 @@
 import 'package:http/http.dart' as http;
 import 'package:abstractions/beliefs.dart';
 
-import '../../app/state/app_state.dart';
+import '../../app/app_beliefs.dart';
 import 'update_sections_v_m.dart';
 
 final http.Client _client = http.Client();
 
-class CreateSection extends Consideration<AppState> {
+class CreateSection extends Consideration<AppBeliefs> {
   const CreateSection();
 
   @override
-  Future<void> consider(BeliefSystem<AppState> beliefSystem) async {
+  Future<void> consider(BeliefSystem<AppBeliefs> beliefSystem) async {
     final queryParameters = {'name': beliefSystem.beliefs.sections.newName};
     final uri = Uri.https(
         'section-creation-v6exb2sdca-uc.a.run.app', '', queryParameters);

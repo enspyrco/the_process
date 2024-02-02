@@ -2,7 +2,7 @@ import 'package:flutterfire_firebase_auth_for_perception/flutterfire_firebase_au
 import 'package:framing_in_perception/framing_in_perception.dart';
 import 'package:flutter/material.dart';
 
-import '../app/state/app_state.dart';
+import '../app/app_beliefs.dart';
 import '../organisations/routes/manage_organisations_page_state.dart';
 import '../organisations/widgets/organisation_selector.dart';
 import '../projects/widgets/grid-view/projects_grid.dart';
@@ -52,11 +52,11 @@ class _BasicAppBarState extends State<BasicAppBar> {
               LogoIcon(),
               Spacer(),
               NotificationsButton(),
-              AvatarMenuButton<AppState>(
+              AvatarMenuButton<AppBeliefs>(
                 options: {
-                  MenuOption('Sign Out', SigningOut<AppState>()),
+                  MenuOption('Sign Out', SigningOut<AppBeliefs>()),
                   MenuOption('Manage Organisations',
-                      AddTopLayer<AppState>(ManageOrganisationsPageState())),
+                      AddTopLayer<AppBeliefs>(ManageOrganisationsPageState())),
                 },
               ),
             ],

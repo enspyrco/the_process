@@ -2,18 +2,18 @@ import 'package:locator_for_perception/locator_for_perception.dart';
 import 'package:firestore_service_interface/firestore_service_interface.dart';
 import 'package:abstractions/beliefs.dart';
 
-import '../../app/state/app_state.dart';
+import '../../app/app_beliefs.dart';
 import '../models/organisation_model.dart';
 import 'update_organisations_page.dart';
 
-class CreateOrganisation extends Consideration<AppState> {
+class CreateOrganisation extends Consideration<AppBeliefs> {
   CreateOrganisation(OrganisationModel organisation)
       : _organisation = organisation;
 
   final OrganisationModel _organisation;
 
   @override
-  Future<void> consider(BeliefSystem<AppState> beliefSystem) async {
+  Future<void> consider(BeliefSystem<AppBeliefs> beliefSystem) async {
     beliefSystem.conclude(UpdateOrganisationsPage(creating: true));
 
     var organisation = _organisation

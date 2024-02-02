@@ -2,18 +2,18 @@ import 'package:locator_for_perception/locator_for_perception.dart';
 import 'package:firestore_service_interface/firestore_service_interface.dart';
 import 'package:abstractions/beliefs.dart';
 
-import '../../app/state/app_state.dart';
+import '../../app/app_beliefs.dart';
 import '../../organisations/models/organisation_model.dart';
 import '../models/project_state.dart';
 import '../models/update_projects_view.dart';
 
-class CreateProject extends Consideration<AppState> {
+class CreateProject extends Consideration<AppBeliefs> {
   const CreateProject(ProjectState project) : _project = project;
 
   final ProjectState _project;
 
   @override
-  Future<void> consider(BeliefSystem<AppState> beliefSystem) async {
+  Future<void> consider(BeliefSystem<AppBeliefs> beliefSystem) async {
     try {
       OrganisationModel? selected =
           beliefSystem.beliefs.organisations.selector.selected;
